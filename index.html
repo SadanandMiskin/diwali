@@ -317,14 +317,11 @@
     <div id="text">
         <div id="text-main">HAPPY DIWALI</div>
         <div id="text-sub">
-            <!-- <div class="email-container"> -->
-                <input type="email" id="email" class="email-input" placeholder="Enter your email" required>
-                <!-- <button onclick="checkEmail()" class="email-button">Check Email</button> -->
-            <!-- </div> -->
-             <button id="send-gift-button" class="button-85" onclick="checkEmail()">Send Gift😁</button>
-             
-
+            <input type="email" id="email" class="email-input" placeholder="Enter your email" required>
+            <button id="send-gift-button" class="button-85" onclick="checkEmail()">Send Gift😁</button>
         </div>
+        <div id="popup" class="popup"></div>
+        
     </div>
     <div id="popup" class="popup"></div>  
     <script>
@@ -357,7 +354,7 @@
 
 
 
-async function checkEmail() {
+        async function checkEmail() {
     const emailInput = document.getElementById('email');
     const popup = document.getElementById('popup');
     const email = emailInput.value;
@@ -376,6 +373,7 @@ async function checkEmail() {
     }
 
     // Show loading state
+    emailInput.style.display = 'none'; // Hide the email input
     button.textContent = 'Sending...'; // Change button text
     button.disabled = true; // Disable button to prevent multiple clicks
 
@@ -409,7 +407,10 @@ async function checkEmail() {
         // Revert button text and enable it again
         button.textContent = 'Send Gift😁'; // Reset button text
         button.disabled = false; // Enable button
-        setTimeout(() => popup.classList.remove('show'), 1800);
+        setTimeout(() => {
+            popup.classList.remove('show');
+            emailInput.style.display = 'inline'; // Show the email input again after the popup message
+        }, 1800);
     }
 }
 
