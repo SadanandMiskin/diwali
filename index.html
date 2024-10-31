@@ -462,10 +462,10 @@
         
         // Display message based on true/false response
         if (result) {
-            popup.textContent = 'Gift sent!';
+            popup.textContent = 'Gift sent🎉 Check Mail.';
             popup.className = 'popup show success'; // Apply success styling
         } else {
-            popup.textContent = 'Write email correctly.';
+            popup.textContent = 'Write email correctly❌.';
             popup.className = 'popup show error'; // Apply error styling
         }
     } catch (error) {
@@ -479,7 +479,7 @@
         setTimeout(() => {
             popup.classList.remove('show');
             emailInput.style.display = 'inline'; // Show the email input again after the popup message
-        }, 1800);
+        }, 2800);
     }
 }
 
