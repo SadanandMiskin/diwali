@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #0a001f, #1a0033);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .diya {
+            position: absolute;
+            width: 40px;
+            height: 20px;
+            border-radius: 50%;
+            background: #963;
+            transform-origin: center;
+        }
+
+        .flame {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 15px;
+            background: #ff6;
+            border-radius: 50% 50% 20% 20%;
+            animation: flicker 0.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes flicker {
+            0%, 100% { transform: translateX(-50%) scale(1); opacity: 1; }
+            50% { transform: translateX(-50%) scale(0.95); opacity: 0.8; }
+        }
+
+        .rangoli {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeIn 2s ease forwards;
+        }
+
+        .firecracker {
+            position: absolute;
+            bottom: -50px;
+            width: 4px;
+            height: 40px;
+            background: #ff4400;
+            animation: launch 1.5s ease-out forwards;
+        }
+
+        .spark-trail {
+            position: absolute;
+            bottom: 40px;
+            width: 2px;
+            opacity: 0;
+        }
+
+        .burst {
+            position: absolute;
+            opacity: 0;
+        }
+
+        #text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: min(15vw, 120px);
+            font-weight: bold;
+            text-align: center;
+            opacity: 0;
+            animation: textReveal 2s ease forwards;
+            animation-delay: 3s;
+        }
+
+        #text-main {
+            background: linear-gradient(45deg, #ffd700, #ff9900, #ff0066, #ffd700);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.3));
+        }
+
+        #text-sub {
+            font-size: min(5vw, 40px);
+            margin-top: 20px;
+            color: #ffd700;
+            opacity: 0.8;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 1s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes launch {
+            0% { transform: translateY(0); height: 40px; }
+            100% { transform: translateY(-100vh); height: 0; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes textReveal {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .particle {
+            position: absolute;
+            background: linear-gradient(45deg, #ff4400, #ff9900);
+            border-radius: 50%;
+            transform-origin: center;
+        }
+
+        .decoration {
+            position: absolute;
+            font-size: 24px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div id="text">
+        <div id="text-main">HAPPY DIWALI</div>
+        <div id="text-sub">Festival of Lights</div>
+    </div>
+    
+    <script>
+        function createStars() {
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = `${Math.random() * 100}vw`;
+                star.style.top = `${Math.random() * 100}vh`;
+                star.style.animationDelay = `${Math.random() * 1}s`;
+                document.body.appendChild(star);
+            }
+        }
+
+        function createDiyas() {
+            const positions = [
+                { bottom: '10%', left: '10%' },
+                { bottom: '10%', right: '10%' },
+                { bottom: '20%', left: '20%' },
+                { bottom: '20%', right: '20%' },
+                { top: '20%', left: '10%' },
+                { top: '20%', right: '10%' }
+            ];
+
+            positions.forEach((pos, i) => {
+                const diya = document.createElement('div');
+                diya.className = 'diya';
+                Object.assign(diya.style, pos);
+                
+                const flame = document.createElement('div');
+                flame.className = 'flame';
+                diya.appendChild(flame);
+                
+                setTimeout(() => {
+                    document.body.appendChild(diya);
+                }, i * 300);
+            });
+        }
+
+        function createRangoli() {
+            const rangoli = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            rangoli.setAttribute("class", "rangoli");
+            rangoli.setAttribute("viewBox", "0 0 100 100");
+            
+            const patterns = [
+                "M50,10 L90,50 L50,90 L10,50 Z",
+                "M50,20 L80,50 L50,80 L20,50 Z",
+                "M50,30 L70,50 L50,70 L30,50 Z"
+            ];
+
+            patterns.forEach((d, i) => {
+                const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                path.setAttribute("d", d);
+                path.setAttribute("fill", "none");
+                path.setAttribute("stroke", `hsl(${i * 30}, 100%, 50%)`);
+                path.setAttribute("stroke-width", "0.5");
+                rangoli.appendChild(path);
+            });
+
+            document.body.appendChild(rangoli);
+        }
+
+        function createFirework(x, delay) {
+            setTimeout(() => {
+                const firecracker = document.createElement('div');
+                firecracker.className = 'firecracker';
+                firecracker.style.left = `${x}%`;
+                
+                const sparkTrail = document.createElement('div');
+                sparkTrail.className = 'spark-trail';
+                sparkTrail.style.left = `${x}%`;
+                
+                document.body.appendChild(firecracker);
+                document.body.appendChild(sparkTrail);
+
+                setTimeout(() => {
+                    createBurst(x, 50);
+                }, 1500);
+            }, delay);
+        }
+
+        function createBurst(x, y) {
+            const burst = document.createElement('div');
+            burst.className = 'burst';
+            burst.style.left = `${x}%`;
+            burst.style.top = `${y}%`;
+            
+            const colors = ['#ffd700', '#ff9900', '#ff0066', '#ff4400'];
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = Math.random() * 6 + 2;
+                const angle = (i / 50) * 360;
+                const distance = 100 + Math.random() * 50;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                const animation = particle.animate([
+                    { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+                    {
+                        transform: `translate(
+                            ${Math.cos(angle * Math.PI / 180) * distance}px,
+                            ${Math.sin(angle * Math.PI / 180) * distance}px
+                        ) scale(0)`,
+                        opacity: 0
+                    }
+                ], {
+                    duration: 1000 + Math.random() * 500,
+                    easing: 'ease-out',
+                    fill: 'forwards'
+                });
+                
+                burst.appendChild(particle);
+            }
+            
+            document.body.appendChild(burst);
+        }
+
+        function addFestiveDecorations() {
+            const decorations = ['🪔', '✨', '🌟'];
+            for (let i = 0; i < 15; i++) {
+                const decoration = document.createElement('div');
+                decoration.className = 'decoration';
+                decoration.textContent = decorations[Math.floor(Math.random() * decorations.length)];
+                decoration.style.left = `${Math.random() * 100}vw`;
+                decoration.style.top = `${Math.random() * 100}vh`;
+                decoration.style.animationDelay = `${Math.random() * 2}s`;
+                document.body.appendChild(decoration);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createStars();
+            createDiyas();
+            createRangoli();
+            addFestiveDecorations();
+            
+            // Launch multiple fireworks
+            createFirework(30, 0);
+            createFirework(50, 500);
+            createFirework(70, 1000);
+            createFirework(40, 1500);
+            createFirework(60, 2000);
+        });
+    </script>
+</body>
+</html>
