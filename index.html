@@ -318,7 +318,7 @@
     padding: 1em 2em;
     border-radius: 5px;
     text-align: center;
-    font-size: 1.1em;
+    font-size: 3rem;
     font-weight: bold;
     min-width: 250px;
     display: none;
@@ -480,6 +480,7 @@
             popup.classList.remove('show');
             emailInput.style.display = 'inline'; // Show the email input again after the popup message
         }, 2800);
+        emailInput.value = ""
     }
 }
 
