@@ -40,22 +40,31 @@
         }
 
         #beam {
-            content: '🚀';
-            position: absolute;
-            width: 100vw;
-            height: 10vw;
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(15deg);
-            background: linear-gradient(120deg, transparent, rgba(255, 223, 0, 0.4), transparent);
-            filter: blur(10px);
-            animation: beamMove 5s infinite linear;
-        }
+    content: '🚀';
+    position: absolute;
+    width: 100%; /* Change to 100% for responsive width */
+    height: 10vh; /* Change to 10vh for responsive height */
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(15deg);
+    background: linear-gradient(120deg, transparent, rgba(255, 223, 0, 0.4), transparent);
+    filter: blur(10px);
+    animation: beamMove 5s infinite linear;
+}
 
-        @keyframes beamMove {
-            0% { transform: translate(-50%, -50%) rotate(15deg) translateX(-100vw); }
-            100% { transform: translate(-50%, -50%) rotate(15deg) translateX(100vw); }
-        }
+@keyframes beamMove {
+    0% { transform: translate(-50%, -50%) rotate(15deg) translateX(-100%); }
+    100% { transform: translate(-50%, -50%) rotate(15deg) translateX(100%); }
+}
+
+/* Media queries for mobile responsiveness */
+@media (max-width: 768px) {
+    #beam {
+        height: 15vh; /* Adjust height for mobile */
+        top: 35%; /* Adjust position for mobile */
+    }
+}
+
 
 /* 
         #beam1 {
