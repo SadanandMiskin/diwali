@@ -39,37 +39,41 @@
             50% { transform: translateX(-50%) scale(0.95); opacity: 0.8; }
         }
 
-        .rangoli {
+        #beam {
+            content: '🚀';
             position: absolute;
-            width: 300px;
-            height: 300px;
-            bottom: 10%;
+            width: 100vw;
+            height: 10vw;
+            top: 40%;
             left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            animation: fadeIn 2s ease forwards;
+            transform: translate(-50%, -50%) rotate(15deg);
+            background: linear-gradient(120deg, transparent, rgba(255, 223, 0, 0.4), transparent);
+            filter: blur(10px);
+            animation: beamMove 5s infinite linear;
         }
 
-        .firecracker {
-            position: absolute;
-            bottom: -50px;
-            width: 4px;
-            height: 40px;
-            background: #ff4400;
-            animation: launch 1.5s ease-out forwards;
+        @keyframes beamMove {
+            0% { transform: translate(-50%, -50%) rotate(15deg) translateX(-100vw); }
+            100% { transform: translate(-50%, -50%) rotate(15deg) translateX(100vw); }
         }
 
-        .spark-trail {
+/* 
+        #beam1 {
             position: absolute;
-            bottom: 40px;
-            width: 2px;
-            opacity: 0;
+            width: 100vw;
+            height: 10vw;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(15deg);
+            background: linear-gradient(120deg, transparent, rgba(255, 223, 0, 0.4), transparent);
+            filter: blur(10px);
+            animation: beamMove 5s infinite linear;
         }
 
-        .burst {
-            position: absolute;
-            opacity: 0;
-        }
+        @keyframes beamMove {
+            0% { transform: translate(-50%, -50%) rotate(15deg) translateX(-100vw); }
+            100% { transform: translate(-50%, -50%) rotate(15deg) translateX(100vw); }
+        } */
 
         #text {
             position: absolute;
@@ -85,11 +89,11 @@
         }
 
         #text-main {
-            background: linear-gradient(45deg, #ffd700, #ff9900, #ff0066, #ffd700);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.3));
+             font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+            color: #ffd700;
+            text-shadow: 0 0 15px rgba(255, 223, 0, 0.6), 0 0 30px rgba(255, 102, 0, 0.4);
         }
 
         #text-sub {
@@ -113,26 +117,30 @@
             100% { opacity: 1; }
         }
 
-        @keyframes launch {
-            0% { transform: translateY(0); height: 40px; }
-            100% { transform: translateY(-100vh); height: 0; }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
         @keyframes textReveal {
-            0% {
-                opacity: 0;
-                transform: translate(-50%, -50%) scale(0.5);
-            }
-            100% {
-                opacity: 1;
-                transform: translate(-50%, -50%) scale(1);
-            }
-        }
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5) rotate(-15deg);
+        filter: blur(8px);
+        color: #ff4500; /* Starting with a warm orange */
+        text-shadow: 0 0 10px rgba(255, 69, 0, 0.5), 0 0 20px rgba(255, 140, 0, 0.4);
+    }
+    50% {
+        opacity: 0.7;
+        transform: translate(-50%, -50%) scale(1.1) rotate(5deg);
+        filter: blur(4px);
+        color: #ffd700; /* Shifting to gold halfway */
+        text-shadow: 0 0 15px rgba(255, 223, 0, 0.6), 0 0 30px rgba(255, 140, 0, 0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        filter: blur(0px);
+        color: #ffd700; /* Final gold color */
+        text-shadow: 0 0 20px rgba(255, 223, 0, 0.8), 0 0 40px rgba(255, 223, 0, 0.6);
+    }
+}
+
 
         .particle {
             position: absolute;
@@ -151,15 +159,308 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
+        
+        
+        
+        
+        
+        
+        
+
+
+/* CSS */
+.button-85 {
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #8b0000; /* Darker festive red background */
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  font-weight: bold;
+  font-family: 'Verdana', sans-serif;
+}
+
+.button-85:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff7f50, /* Coral */
+    #ffb347, /* Mango yellow */
+    #ffd700, /* Gold */
+    #ff6347, /* Tomato */
+    #ff4500, /* Orange Red */
+    #ff69b4  /* Hot Pink */
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 200%;
+  z-index: -1;
+  filter: blur(8px); /* Increased blur for a softer glow */
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  animation: glowing-button-85 10s linear infinite; /* Faster animation */
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-button-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.button-85:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #8b0000; /* Matches the button color */
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(255, 165, 0, 0.6); /* Soft orange glow around the button */
+}
+
+
+
+
+
+  .email-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            bottom: 20px;
+        }
+
+        .email-input {
+            padding: 0.5em;
+            border-radius: 8px;
+            border: 1px solid #ff7f50;
+            width: 250px;
+           
+        }
+
+        .email-button {
+            margin-top: 10px;
+            padding: 0.6em 1.2em;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            background-color: #8b0000;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: 'Verdana', sans-serif;
+            filter: drop-shadow(0px 0px 10px rgba(255, 165, 0, 0.6));
+        }
+
+        /* Popup styles */
+        /* Base styling for the popup */
+.popup {
+    position: fixed;
+    top: 10px; /* Positioned near the top */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.85);
+    color: #ffd700;
+    padding: 1em 2em;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: bold;
+    min-width: 250px;
+    display: none;
+    z-index: 1000;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.popup.show {
+    display: block;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Styling for success and error messages */
+.popup.success {
+    background-color: #28a745; /* Green for success */
+    color: #ffffff;
+}
+
+.popup.error {
+    background-color: #dc3545; /* Red for error */
+    color: #ffffff;
+}
+
+.rocket {
+            position: absolute;
+            width: 10px;
+            height: 30px;
+            background: linear-gradient(to bottom, #ff9900, #ff4400);
+            border-radius: 50% 50% 20% 20%;
+            animation: launch 2s ease-out forwards;
+        }
+
+        @keyframes launch {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0.5) translateX(100vw) translateY(100vh); opacity: 0; }
+        }
+
+        .rocket::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 10px;
+            background: #fff;
+            border-radius: 50%;
+            animation: sparkle 1s infinite alternate;
+        }
+
+        @keyframes sparkle {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .rocket::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 20px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+            border-radius: 50% 50% 20% 20%;
+            animation: trail 1s infinite linear;
+        }
+
+        @keyframes trail {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
+        }
     </style>
 </head>
 <body>
+    
+    <div id="beam"></div>
+    
+
     <div id="text">
         <div id="text-main">HAPPY DIWALI</div>
-        <div id="text-sub">Festival of Lights</div>
+        <div id="text-sub">
+            <!-- <div class="email-container"> -->
+                <input type="email" id="email" class="email-input" placeholder="Enter your email" required>
+                <!-- <button onclick="checkEmail()" class="email-button">Check Email</button> -->
+            <!-- </div> -->
+             <button id="send-gift-button" class="button-85" onclick="checkEmail()">Send Gift😁</button>
+             
+
+        </div>
     </div>
-    
+    <div id="popup" class="popup"></div>  
     <script>
+
+function createRockets() {
+            for (let i = 0; i < 5; i++) {
+                const rocket = document.createElement('div');
+                rocket.className = 'rocket';
+                rocket.style.animationDelay = `${Math.random() * 1}s`;
+                rocket.style.transform = `rotate(${Math.random() * 360}deg)`;
+                rocket.style.left = `${Math.random() * 100}vw`;
+                rocket.style.top = `${Math.random() * 100}vh`;
+                rocket.style.animationDelay = `${Math.random() * 1}s`;
+                rocket.style.transform = `rotate(${Math.random() * 360}deg)`;
+                document.body.appendChild(rocket);
+
+                // setTimeout(() => {
+                //     rocket.remove();
+                // }, 2000);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createStars();
+            createDiyas();
+            createRockets();
+
+            setInterval(createRockets, 3000);
+        });
+
+
+
+async function checkEmail() {
+    const emailInput = document.getElementById('email');
+    const popup = document.getElementById('popup');
+    const email = emailInput.value;
+    const button = document.getElementById('send-gift-button');
+
+    // Replace this with the actual token you want to use
+    const token = "sadanandbhai"; // Replace with your actual token string
+
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        popup.textContent = 'Please enter a valid email address.';
+        popup.className = 'popup show error'; // Apply error styling
+        setTimeout(() => popup.classList.remove('show'), 1000);
+        return;
+    }
+
+    // Show loading state
+    button.textContent = 'Sending...'; // Change button text
+    button.disabled = true; // Disable button to prevent multiple clicks
+
+    // API call to check email validity
+    try {
+        const response = await fetch('https://surf-tasteful-swing.glitch.me/diwali', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}` // Add the token in the headers
+            },
+            body: JSON.stringify({ email })
+        });
+
+        const result = await response.json();
+        console.log(result);
+        
+        // Display message based on true/false response
+        if (result) {
+            popup.textContent = 'Gift sent!';
+            popup.className = 'popup show success'; // Apply success styling
+        } else {
+            popup.textContent = 'Write email correctly.';
+            popup.className = 'popup show error'; // Apply error styling
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        popup.textContent = 'Something went wrong. Please try again.';
+        popup.className = 'popup show error'; // Apply error styling for failure
+    } finally {
+        // Revert button text and enable it again
+        button.textContent = 'Send Gift😁'; // Reset button text
+        button.disabled = false; // Enable button
+        setTimeout(() => popup.classList.remove('show'), 1800);
+    }
+}
+
         function createStars() {
             for (let i = 0; i < 100; i++) {
                 const star = document.createElement('div');
@@ -196,114 +497,9 @@
             });
         }
 
-        function createRangoli() {
-            const rangoli = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-            rangoli.setAttribute("class", "rangoli");
-            rangoli.setAttribute("viewBox", "0 0 100 100");
-            
-            const patterns = [
-                "M50,10 L90,50 L50,90 L10,50 Z",
-                "M50,20 L80,50 L50,80 L20,50 Z",
-                "M50,30 L70,50 L50,70 L30,50 Z"
-            ];
-
-            patterns.forEach((d, i) => {
-                const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-                path.setAttribute("d", d);
-                path.setAttribute("fill", "none");
-                path.setAttribute("stroke", `hsl(${i * 30}, 100%, 50%)`);
-                path.setAttribute("stroke-width", "0.5");
-                rangoli.appendChild(path);
-            });
-
-            document.body.appendChild(rangoli);
-        }
-
-        function createFirework(x, delay) {
-            setTimeout(() => {
-                const firecracker = document.createElement('div');
-                firecracker.className = 'firecracker';
-                firecracker.style.left = `${x}%`;
-                
-                const sparkTrail = document.createElement('div');
-                sparkTrail.className = 'spark-trail';
-                sparkTrail.style.left = `${x}%`;
-                
-                document.body.appendChild(firecracker);
-                document.body.appendChild(sparkTrail);
-
-                setTimeout(() => {
-                    createBurst(x, 50);
-                }, 1500);
-            }, delay);
-        }
-
-        function createBurst(x, y) {
-            const burst = document.createElement('div');
-            burst.className = 'burst';
-            burst.style.left = `${x}%`;
-            burst.style.top = `${y}%`;
-            
-            const colors = ['#ffd700', '#ff9900', '#ff0066', '#ff4400'];
-            
-            for (let i = 0; i < 50; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                
-                const size = Math.random() * 6 + 2;
-                const angle = (i / 50) * 360;
-                const distance = 100 + Math.random() * 50;
-                
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                
-                const animation = particle.animate([
-                    { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
-                    {
-                        transform: `translate(
-                            ${Math.cos(angle * Math.PI / 180) * distance}px,
-                            ${Math.sin(angle * Math.PI / 180) * distance}px
-                        ) scale(0)`,
-                        opacity: 0
-                    }
-                ], {
-                    duration: 1000 + Math.random() * 500,
-                    easing: 'ease-out',
-                    fill: 'forwards'
-                });
-                
-                burst.appendChild(particle);
-            }
-            
-            document.body.appendChild(burst);
-        }
-
-        function addFestiveDecorations() {
-            const decorations = ['🪔', '✨', '🌟'];
-            for (let i = 0; i < 15; i++) {
-                const decoration = document.createElement('div');
-                decoration.className = 'decoration';
-                decoration.textContent = decorations[Math.floor(Math.random() * decorations.length)];
-                decoration.style.left = `${Math.random() * 100}vw`;
-                decoration.style.top = `${Math.random() * 100}vh`;
-                decoration.style.animationDelay = `${Math.random() * 2}s`;
-                document.body.appendChild(decoration);
-            }
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
             createStars();
             createDiyas();
-            createRangoli();
-            addFestiveDecorations();
-            
-            // Launch multiple fireworks
-            createFirework(30, 0);
-            createFirework(50, 500);
-            createFirework(70, 1000);
-            createFirework(40, 1500);
-            createFirework(60, 2000);
         });
     </script>
 </body>
