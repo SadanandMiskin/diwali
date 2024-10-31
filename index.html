@@ -93,24 +93,33 @@
             font-weight: bold;
             text-align: center;
             opacity: 0;
-            animation: textReveal 2s ease forwards;
-            animation-delay: 3s;
+            animation: textReveal 2.5s ease forwards;
+            animation-delay: 1s;
         }
 
         #text-main {
-             font-family: "Poppins", sans-serif;
-  font-weight: 900;
-  font-style: normal;
-            color: #ffd700;
-            text-shadow: 0 0 15px rgba(255, 223, 0, 0.6), 0 0 30px rgba(255, 102, 0, 0.4);
-        }
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: min(20vw, 200px); /* Responsive font size */
+    color: #ffd700;
+    text-shadow: 0 0 15px rgba(255, 223, 0, 0.6), 0 0 30px rgba(255, 102, 0, 0.4);
+}
 
-        #text-sub {
-            font-size: min(5vw, 40px);
-            margin-top: 20px;
-            color: #ffd700;
-            opacity: 0.8;
-        }
+#text-sub {
+    font-size: min(5vw, 40px);
+    margin-top: 20px;
+    color: #ffd700;
+    opacity: 0.8;
+}
+
+.email-input {
+    padding: 1em;
+    border-radius: 8px;
+    border: 1px solid #ff7f50;
+    width: 50vw; /* Responsive width */
+    font-size: min(3vw, 24px); /* Responsive font size */
+}
 
         .star {
             position: absolute;
@@ -130,23 +139,42 @@
     0% {
         opacity: 0;
         transform: translate(-50%, -50%) scale(0.5) rotate(-15deg);
-        filter: blur(8px);
-        color: #ff4500; /* Starting with a warm orange */
-        text-shadow: 0 0 10px rgba(255, 69, 0, 0.5), 0 0 20px rgba(255, 140, 0, 0.4);
+        filter: blur(8px) drop-shadow(0 0 10px rgba(255, 105, 180, 0.5));
+        color: #ff69b4;
+        text-shadow: 
+            0 0 10px rgba(255, 105, 180, 0.7), 
+            0 0 20px rgba(255, 182, 193, 0.5),
+            0 0 30px rgba(255, 60, 100, 0.3);
     }
-    50% {
+    30% {
         opacity: 0.7;
         transform: translate(-50%, -50%) scale(1.1) rotate(5deg);
-        filter: blur(4px);
-        color: #ffd700; /* Shifting to gold halfway */
-        text-shadow: 0 0 15px rgba(255, 223, 0, 0.6), 0 0 30px rgba(255, 140, 0, 0.5);
+        filter: blur(4px) drop-shadow(0 0 15px rgba(255, 215, 0, 0.7));
+        color: #ffd700;
+        text-shadow: 
+            0 0 15px rgba(255, 215, 0, 0.8), 
+            0 0 30px rgba(255, 140, 0, 0.5),
+            0 0 40px rgba(255, 245, 0, 0.4);
+    }
+    70% {
+        opacity: 0.9;
+        transform: translate(-50%, -50%) scale(1.05) rotate(-2deg);
+        filter: blur(2px) drop-shadow(0 0 20px rgba(255, 245, 0, 0.9));
+        color: #ffeb3b;
+        text-shadow: 
+            0 0 20px rgba(255, 245, 0, 0.9), 
+            0 0 40px rgba(255, 215, 0, 0.7),
+            0 0 60px rgba(255, 245, 0, 0.5);
     }
     100% {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1) rotate(0deg);
-        filter: blur(0px);
-        color: #ffd700; /* Final gold color */
-        text-shadow: 0 0 20px rgba(255, 223, 0, 0.8), 0 0 40px rgba(255, 223, 0, 0.6);
+        filter: blur(0px) drop-shadow(0 0 30px rgba(255, 245, 0, 1));
+        color: #ffd700;
+        text-shadow: 
+            0 0 30px rgba(255, 245, 0, 1), 
+            0 0 60px rgba(255, 215, 0, 0.8),
+            0 0 90px rgba(255, 245, 0, 0.6);
     }
 }
 
@@ -179,20 +207,21 @@
 
 /* CSS */
 .button-85 {
-  padding: 0.6em 2em;
-  border: none;
-  outline: none;
-  color: rgb(255, 255, 255);
-  background: #8b0000; /* Darker festive red background */
-  cursor: pointer;
-  position: relative;
-  z-index: 0;
-  border-radius: 10px;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  font-weight: bold;
-  font-family: 'Verdana', sans-serif;
+    padding: 1em 1em;
+    border: none;
+    outline: none;
+    color: rgb(255, 255, 255);
+    background: #8b0000; /* Darker festive red background */
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    font-weight: bold;
+    font-size: min(3vw, 24px); /* Responsive font size */
+    font-family: 'Verdana', sans-serif;
 }
 
 .button-85:before {
@@ -316,11 +345,42 @@
 }
 
 
+@media (max-width: 768px) {
+    #text-main {
+        font-size: min(15vw, 120px);
+    }
+    
+    .email-input {
+        width: 80vw;
+        font-size: min(5vw, 20px);
+    }
+    
+    .button-85 {
+        font-size: min(5vw, 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    #text-main {
+        font-size: min(10vw, 80px);
+    }
+    
+    .email-input {
+        width: 90vw;
+        font-size: min(5vw, 18px);
+    }
+    
+    .button-85 {
+        font-size: min(5vw, 18px);
+    }
+}
+
+
     </style>
 </head>
 <body>
     
-<!--     <div id="beam"></div> -->
+    <!-- <div id="beam"></div> -->
     
 
     <div id="text">
@@ -373,7 +433,7 @@
     const token = "sadanandbhai"; // Replace with your actual token string
 
     // Basic email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/;
     if (!emailRegex.test(email)) {
         popup.textContent = 'Please enter a valid email address.';
         popup.className = 'popup show error'; // Apply error styling
